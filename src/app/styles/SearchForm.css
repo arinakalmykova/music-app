@@ -1,0 +1,29 @@
+
+input {
+    padding: 20px 25px;
+    font-size: 1rem;
+    border-radius: 30px;
+    width: 100%;
+    flex: 1;
+}
+
+button {
+    padding: 15px 20px;
+    font-size: 1rem;
+    margin-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+    gap: 12px;
+}
+

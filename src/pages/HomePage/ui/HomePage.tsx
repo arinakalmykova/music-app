@@ -1,27 +1,15 @@
-import { useState, useEffect} from 'react';
-import { searchArtists } from '../../../entities/artist/api/artistApi';
-import type { Artist } from '../../../entities/artist/model/types';
+import {SearchForm} from '../../../features/artistSearch/ui/SearchForm';
+import useArtistSearch from '../../../features/artistSearch/model/useArtistSearch';
+import { ArtistList } from '../../../widgets/ArtistList/ui/ArtistList';
+import '../../../app/styles/HomePage.css';
 
 export function HomePage() {
-    const [artists, setArtists] = useState<Artist[]>([]);
-
-    useEffect(() => {
-    async function fetchArtists() {
-      const results = await searchArtists('Три дня дождя');
-      setArtists(results);
-    };
-    fetchArtists();
-        }, []);
+    const {isLoading, error, results, search} = useArtistSearch();
 
   return (
-    <div>
-      <ul>
-        {artists.map((artist) => (
-          <li key={artist.id}>
-            <h2>{artist.name}</h2>
-          </li>
-        ))}
-      </ul>
+    <div className='search'>
+        <SearchForm  onSearch={search} isLoading={isLoading}/>
+        <ArtistList artists={results} isLoading={isLoading} error={error} />
     </div>
   );
 }

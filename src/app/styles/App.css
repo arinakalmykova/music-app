@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.search{
+  margin-top: 2rem;
+}
+
+.input{
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 300px;
+}
+
+.results{
+  margin-top: 2rem;
+  text-align: left;
+}
+
+

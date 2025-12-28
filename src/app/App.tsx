@@ -1,5 +1,6 @@
-import './App.css'
+import './styles/App.css'
 import HomePage  from './router/router.tsx';
+
 function App() {
 
   return (
