@@ -1,6 +1,5 @@
-import {SearchForm} from '../../../features/artistSearch/ui/SearchForm';
+import { SearchForm, ArtistList } from '../../../app/router/router';
 import useArtistSearch from '../../../features/artistSearch/model/useArtistSearch';
-import { ArtistList } from '../../../widgets/ArtistList/ui/ArtistList';
 import '../../../app/styles/HomePage.css';
 
 export function HomePage() {

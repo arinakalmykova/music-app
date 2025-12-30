@@ -1,4 +1,6 @@
 import type {Artist} from '../../../entities/artist/model/types';
+import {ArtistCard} from '../../../app/router/router';
+import '../../../app/styles/ArtistList.css';
 
 interface ArtistListProps {
     artists: Artist[]
@@ -22,14 +24,10 @@ export function ArtistList({ artists, isLoading, error }: ArtistListProps) {
 
 
     return (
-        <ul>
+        <div className='artist-list'>
             {artists.map((artist) => (
-                <li key={artist.id}>
-                    <h2>{artist.name}</h2>
-                    <img src={artist.image} alt={artist.name} />
-                    <p>Слушателей: {artist.listeners}</p>
-                </li>       
+                <ArtistCard key={artist.id} artist={artist} />
             ))}
-        </ul>
+        </div>
     );
 }
