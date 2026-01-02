@@ -1,3 +1,6 @@
+import type { Track } from '../../track/model/types';
+import type { Album } from '../../album/model/types';
+
 export interface Artist {
   id: string;
   name: string;
@@ -16,20 +19,4 @@ export interface ArtistInfo {
   similarArtists: Artist[];
   topTracks: Track[];
   topAlbums: Album[];
-}
-
-export interface Track {
-    id: string;
-    title: string;
-    duration: number;
-    artistId: string;
-}
-
-export interface Album {
-    id: string;
-    title: string;
-    artistId: string;
-    coverImage: string;
-    releaseDate: string;
-    tracks: Track[];
 }

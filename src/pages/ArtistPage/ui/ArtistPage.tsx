@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useArtistInfo from '../../../features/useArtistInfo/model/useArtistInfo';
 import { ArtistCard } from '../../../entities/artist/ui/ArtistCard';
-import { TrackCard } from '../../../entities/track/ui/TrackCard';
 import { AlbumCard } from '../../../entities/album/ui/AlbumCard';
+import { TrackCard } from '../../../entities/track/ui/TrackCard';
 import '../../../app/styles/ArtistPage.css';
+import { ArrowLeft } from 'phosphor-react';
+import { Play, Heart } from 'lucide-react';
 
 export function ArtistPage() {
   const { name } = useParams();
@@ -20,31 +22,49 @@ export function ArtistPage() {
 
   return (
     <div className="artist-page">
-      <div className="artist-header">
-        <img src={artistInfo.image || '/placeholder.png'} alt={artistInfo.name} />
-        <div className="artist-info">
-          <h1>{artistInfo.name}</h1>
-          <p>Слушателей: {artistInfo.listeners}</p>
-          <p>Плейкаунт: {artistInfo.playcount}</p>
-          <p>Биография: {artistInfo.bio}</p>
-          <div className="artist-tags">
-            {artistInfo.tags.map(tag => (
-              <span key={tag} className="tag">{tag}</span>
-            ))}
+      <div className="artist-section-header" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.64)), url(${artistInfo.image || '/placeholder.png'})` }}>
+        <Link to="/" className="back-button">
+          <ArrowLeft className="arrow-icon" />
+          <span>Назад</span>
+        </Link>
+          <div className="artist-content">
+            <h1 className="artist-name">{artistInfo.name}</h1>
+            <div className="monthly-listeners">{artistInfo.listeners} слушателей</div>
           </div>
-        </div>
       </div>
 
-      <section className="artist-section">
-        <h2>Топ-треки</h2>
-        <div className="tracks-list">
-          {artistInfo.topTracks.map(track => (
-            <TrackCard key={track.id} track={track} />
-          ))}
+      <section className="artist-section-genre">
+        <div className="artist-info">
+          <div className="artist-tags"> 
+            <p>Жанры: {artistInfo.tags.map(tag => (
+              <span key={tag} className="tag">{tag}</span>
+            ))}</p>
+          </div>
         </div>
       </section>
 
-      <section className="artist-section">
+        <section className="artist-section-tracks">
+      <h2>Топ-треки</h2>
+      <div className="tracks-list">
+        {artistInfo.topTracks.slice(0, 10).map((track, index) => (
+          <div key={track.id} className="track-item">
+            <div className="track-info"> 
+              <span className="track-number">{index + 1}</span>
+              <TrackCard track={track} />
+            </div>
+            <div className="track-actions"> 
+            <Heart />
+            <Play />
+            </div>
+           
+           
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+      <section className="artist-section-albums">
         <h2>Топ-альбомы</h2>
         <div className="albums-list">
           {artistInfo.topAlbums.map(album => (
@@ -53,13 +73,11 @@ export function ArtistPage() {
         </div>
       </section>
 
-      <section className="artist-section">
+      <section className="artist-section-similar-artists">
         <h2>Похожие артисты</h2>
         <div className="similar-artists-list">
           {artistInfo.similarArtists.map(artist => (
-            <Link key={artist.id} to={`/artist/${artist.name}`}>
               <ArtistCard artist={artist} />
-            </Link>
           ))}
         </div>
       </section>

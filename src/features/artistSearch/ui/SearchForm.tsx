@@ -17,7 +17,7 @@ export function SearchForm({onSearch,isLoading}: SearchFormProps) {
 
     return (
         <form onSubmit={handleSubmit} className="search-form">
-            <input type="text" placeholder="Введите имя артиста..." value={query} onChange={(e) => setQuery(e.target.value)} /> 
+            <input type="text" placeholder="Введите имя артиста или трека..." value={query} onChange={(e) => setQuery(e.target.value)} /> 
             <button className="btn-search" type="submit" disabled={isLoading}>Поиск</button>
         </form>
     );

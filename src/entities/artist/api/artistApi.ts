@@ -1,5 +1,5 @@
 import { LASTFM_API_KEY, LASTFM_API_URL } from '../../../shared/config/env';
-import type { Artist,ArtistInfo } from '../model/types';
+import type { Artist, ArtistInfo } from '../model/types';
 
 export async function searchArtists(query: string): Promise<Artist[]> {
   try {
@@ -71,7 +71,6 @@ export async function getArtistTopTracks(artistName: string): Promise<ArtistInfo
     return data.toptracks.track.map((t: any) => ({
       id: t.mbid || `${t.name}-${artistName}`,
       title: t.name,
-      duration: parseInt(t.duration, 10),
       artistId: artistName,
     }));
   } catch (err) {

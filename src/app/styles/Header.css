@@ -1,10 +1,23 @@
 header {
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
+    top: 0;
+    z-index: 1000;
     position: sticky;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e5e5
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0;
 }
 
 .logo img{
@@ -30,4 +43,16 @@ header {
 
 .nav-links a:hover {
     text-decoration: underline;
+}
+
+span {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+    margin-left: 10px;
+}
+
+.logo-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

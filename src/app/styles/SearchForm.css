@@ -5,6 +5,18 @@ input {
     border-radius: 30px;
     width: 100%;
     flex: 1;
+    border:none;
+    background-color: #f0f0f0;
+    font-family: var(--font-family);
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #000000;
+}
+
+input::placeholder {
+    color: #999999;
 }
 
 button {
