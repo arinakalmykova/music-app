@@ -1,5 +1,5 @@
-import type { Album } from "../model/types";
-import '../../../app/styles/AlbumCard.css';
+import type { Album } from "@/entities/album/model/types";
+import '@/app/styles/AlbumCard.css';
 
 export function AlbumCard({album}: {album: Album}) {
     return (

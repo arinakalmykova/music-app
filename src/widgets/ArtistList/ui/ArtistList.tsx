@@ -1,6 +1,6 @@
-import type {Artist} from '../../../entities/artist/model/types';
-import {ArtistCard} from '../../../app/router/router';
-import '../../../app/styles/ArtistList.css';
+import type {Artist} from '@/entities/artist/model/types';
+import {ArtistCard} from '@/app/index.ts';
+import '@/app/styles/ArtistList.css';
 
 interface ArtistListProps {
     artists: Artist[]

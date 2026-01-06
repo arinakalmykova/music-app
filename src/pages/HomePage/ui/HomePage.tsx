@@ -1,6 +1,6 @@
-import { SearchForm, ArtistList } from '../../../app/router/router';
-import useArtistSearch from '../../../features/artistSearch/model/useArtistSearch';
-import '../../../app/styles/HomePage.css';
+import { SearchForm, ArtistList } from '@/app/index.ts';
+import useArtistSearch from '@/features/artistSearch/model/useArtistSearch';
+import '@/app/styles/HomePage.css';
 
 export function HomePage() {
     const {isLoading, error, results, search} = useArtistSearch();

@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import type { ArtistInfo } from '../../../entities/artist/model/types';
-import { getFullArtistInfo } from '../../../entities/artist/api/artistApi';
+import type { ArtistInfo } from '@/entities/artist/model/types';
+import { getFullArtistInfo } from '@/entities/artist/api/artistApi';
 
 export default function useArtistInfo(artistName: string) {
     const [artistInfo, setArtistInfo] = useState<ArtistInfo | null>(null);

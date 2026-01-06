@@ -1,5 +1,5 @@
-import type { Artist } from '../model/types';
-import '../../../app/styles/ArtistCard.css';
+import type { Artist } from '@/entities/artist/model/types';
+import '@/app/styles/ArtistCard.css';
 import { NavLink } from 'react-router';
 
 export function ArtistCard({ artist }: { artist: Artist }) {

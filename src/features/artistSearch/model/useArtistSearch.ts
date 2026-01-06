@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import type {Artist } from '../../../entities/artist/model/types';
-import { searchArtists } from '../../../entities/artist/api/artistApi';
+import type {Artist } from '@/entities/artist/model/types';
+import { searchArtists } from '@/entities/artist/api/artistApi';
 
 
 export default function useArtistSearch() {

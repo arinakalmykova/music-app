@@ -1,10 +1,27 @@
-import type { Track } from "../model/types"; 
-import '../../../app/styles/TrackCard.css';
+import { LikeButton } from '@/shared/ui/LikeButton';
+import { PlayButton } from '@/shared/ui/PlayButton';
+import { useFavorities } from '@/features/addToFavorites/model/useFavorities';
+import type { Track } from '@/entities/track/model/types.ts'
+import '@/app/styles/TrackCard.css';
 
-export function TrackCard({track}: {track: Track}) {
-    return (
-        <div className="track-card">
-            <h3>{track.title}</h3>
-        </div>
-    );
+interface TrackCardProps {
+  track: Track;
+  index?: number; 
+}
+
+export function TrackCard({ track, index }: TrackCardProps) {
+  const { toggleLike, isLiked } = useFavorities();
+
+  return (
+    <div className="track-item">
+      <div className="track-info">
+        {index !== undefined && <span className="track-number">{index + 1}</span>}
+        <h3>{track.title}</h3>
+      </div>
+      <div className="track-actions">
+        <LikeButton liked={isLiked(track)} onToggle={() => toggleLike(track)} />
+        <PlayButton />
+      </div>
+    </div>
+  );
 }

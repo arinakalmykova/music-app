@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useArtistInfo from '../../../features/useArtistInfo/model/useArtistInfo';
-import { ArtistCard } from '../../../entities/artist/ui/ArtistCard';
-import { AlbumCard } from '../../../entities/album/ui/AlbumCard';
-import { TrackCard } from '../../../entities/track/ui/TrackCard';
-import '../../../app/styles/ArtistPage.css';
+import useArtistInfo from '@/features/useArtistInfo/model/useArtistInfo';
+import { ArtistCard } from '@/entities/artist/ui/ArtistCard';
+import { AlbumCard } from '@/entities/album/ui/AlbumCard';
+import { TrackCard } from '@/entities/track/ui/TrackCard';
+import '@/app/styles/ArtistPage.css';
 import { ArrowLeft } from 'phosphor-react';
-import { Play, Heart } from 'lucide-react';
 
 export function ArtistPage() {
   const { name } = useParams();
@@ -46,19 +45,8 @@ export function ArtistPage() {
         <section className="artist-section-tracks">
       <h2>Топ-треки</h2>
       <div className="tracks-list">
-        {artistInfo.topTracks.slice(0, 10).map((track, index) => (
-          <div key={track.id} className="track-item">
-            <div className="track-info"> 
-              <span className="track-number">{index + 1}</span>
-              <TrackCard track={track} />
-            </div>
-            <div className="track-actions"> 
-            <Heart />
-            <Play />
-            </div>
-           
-           
-          </div>
+        {artistInfo.topTracks.slice(0, 10).map((track, i) => (
+          <TrackCard key={track.id} track={track} index={i} />
         ))}
       </div>
     </section>

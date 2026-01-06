@@ -1,5 +1,5 @@
-import { LASTFM_API_KEY, LASTFM_API_URL } from '../../../shared/config/env';
-import type { Artist, ArtistInfo } from '../model/types';
+import { LASTFM_API_KEY, LASTFM_API_URL } from '@/shared/config/env';
+import type { Artist, ArtistInfo } from '@/entities/artist/model/types';
 
 export async function searchArtists(query: string): Promise<Artist[]> {
   try {

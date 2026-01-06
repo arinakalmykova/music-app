@@ -1,4 +1,4 @@
-import type { Track } from '../../track/model/types';
+import type { Track } from '@/entities/track/model/types';
 
 export interface Album {
     id: string;

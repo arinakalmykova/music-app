@@ -1,7 +1,28 @@
-export { HomePage } from '../../pages/HomePage/ui/HomePage';
-export { ArtistCard } from '../../entities/artist/ui/ArtistCard';
-export { ArtistList } from '../../widgets/ArtistList/ui/ArtistList';
-export { SearchForm } from '../../features/artistSearch/ui/SearchForm';
-export { FavoritiesPage } from '../../pages/Favorites/ui/FavoritiesPage';
-export { ChartsPage } from '../../pages/Charts/ui/ChartsPage';
-export { ArtistPage } from '../../pages/ArtistPage/ui/ArtistPage';
+import {createBrowserRouter} from 'react-router-dom';
+import { MainLayout} from '@/app/layouts/MainLayout.tsx';
+import {HomePage, FavoritiesPage, ChartsPage,ArtistPage}  from '@/app/index.ts';
+
+
+export const router = createBrowserRouter([
+    {
+        element:<MainLayout/>,
+        children: [
+            {
+                path:'/',
+                element:<HomePage/>
+            },
+            {
+                path:'/favorites',
+                element:<FavoritiesPage />
+            },
+            {
+                path:'/charts',
+                element:<ChartsPage />
+            },
+            {
+                path:'/artist/:name',
+                element:<ArtistPage />
+            }
+        ]
+    }
+]);

@@ -1,5 +1,5 @@
-import type { Track } from '../../track/model/types';
-import type { Album } from '../../album/model/types';
+import type { Track } from '@/entities/track/model/types';
+import type { Album } from '@/entities/album/model/types';
 
 export interface Artist {
   id: string;
