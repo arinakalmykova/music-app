@@ -1,23 +1,15 @@
-import {useState} from 'react';
-import type { ArtistInfo } from '@/entities/artist/model/types';
-import { getFullArtistInfo } from '@/entities/artist/api/artistApi';
+import type { AppDispatch, RootState } from '@/app/store/store';
+import  { useDispatch,useSelector} from 'react-redux';
+import {fetchArtist} from '@/app/store/slices/artistSlice';
 
 export default function useArtistInfo(artistName: string) {
-    const [artistInfo, setArtistInfo] = useState<ArtistInfo | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const dispatch = useDispatch<AppDispatch>();
+    const artistInfo = useSelector<RootState>(state => state.artist.artist );
+    const isLoading =useSelector<RootState>(state => state.artist.isLoading );
+    const error =useSelector<RootState>(state => state.artist.error );
 
     const loadArtistInfo = async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-            const info = await getFullArtistInfo(artistName);
-            setArtistInfo(info);
-        } catch (err) {
-            setError('Failed to load artist info');
-        } finally {
-            setIsLoading(false);
-        }
+       dispatch(fetchArtist(artistName));
     };
 
     return { artistInfo, isLoading, error, loadArtistInfo };

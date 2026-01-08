@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import type {Track} from '@/entities/track/model/types.ts';
+import {toggleLike} from '@/app/store/slices/favoritesSlice';
+import  { useSelector} from 'react-redux';
+import { useAppDispatch } from '@/app/store/store';
+import type { RootState} from '@/app/store/store';
 
 export function useFavorities() {
-  const [likedTracks, setLikedTracks] = useState<Track[]>(() => {
-    const stored = localStorage.getItem('likedTracks');
-    return stored ? JSON.parse(stored) : [];
-  });
+  const dispatch = useAppDispatch();
+  const tracks = useSelector<RootState,Track[]>(state => state.favorites.likedMusic);
 
-  const toggleLike = (track: Track) => {
-    setLikedTracks(prev => {
-      const isLiked = prev.find(t => t.id === track.id);
-      const updated = isLiked ? prev.filter(t => t.id !== track.id) : [...prev, track];
-      localStorage.setItem('likedTracks', JSON.stringify(updated));
-      return updated;
-    });
+  const onToggleLike = (track: Track) => {
+    dispatch(toggleLike(track));
   };
 
-  const isLiked = (track: Track) => likedTracks.some(t => t.id === track.id);
+  const isLiked = (track: Track) => tracks.some(t => t.id === track.id);
 
-  return { likedTracks, toggleLike, isLiked };
+  return { tracks, onToggleLike, isLiked };
 }

@@ -10,7 +10,7 @@ interface TrackCardProps {
 }
 
 export function TrackCard({ track, index }: TrackCardProps) {
-  const { toggleLike, isLiked } = useFavorities();
+  const { onToggleLike, isLiked } = useFavorities();
 
   return (
     <div className="track-item">
@@ -19,8 +19,8 @@ export function TrackCard({ track, index }: TrackCardProps) {
         <h3>{track.title}</h3>
       </div>
       <div className="track-actions">
-        <LikeButton liked={isLiked(track)} onToggle={() => toggleLike(track)} />
-        <PlayButton />
+        <LikeButton liked={isLiked(track)} onToggle={() => onToggleLike(track)} />
+        <PlayButton track = {track} />
       </div>
     </div>
   );
