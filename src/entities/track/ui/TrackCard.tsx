@@ -1,7 +1,7 @@
-import { LikeButton } from '@/shared/ui/LikeButton';
-import { PlayButton } from '@/shared/ui/PlayButton';
-import { useFavorities } from '@/features/addToFavorites/model/useFavorities';
-import type { Track } from '@/entities/track/model/types.ts'
+import { LikeButton } from '@/shared';
+import { PlayButton } from '@/shared';
+import { useFavorities } from '@/features';
+import type { Track } from '@/entities'
 import '@/app/styles/TrackCard.css';
 
 interface TrackCardProps {

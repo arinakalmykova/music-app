@@ -1,5 +1,5 @@
-import { TrackCard } from '@/entities/track/ui/TrackCard';
-import { useFavorities } from '@/features/addToFavorites/model/useFavorities';
+import { TrackCard } from '@/entities';
+import { useFavorities } from '@/features';
 
 export function FavoritiesPage() {
   const { tracks } = useFavorities();

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import type {Artist } from '@/entities/artist/model/types';
-import { searchArtists } from '@/entities/artist/api/artistApi';
+import type {Artist } from '@/entities';
+import { searchArtists } from '@/entities';
 
 
-export default function useArtistSearch() {
+export  function useArtistSearch() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<Artist[]>([]);

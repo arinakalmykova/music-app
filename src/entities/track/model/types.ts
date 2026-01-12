@@ -1,7 +1,10 @@
+import type { Artist } from '@/entities';
 
 export interface Track {
-    id: string;
-    title: string;
-    duration: number;
-    artistId: string;
+  id: number;
+  title: string;
+  artistName: string;
+  previewUrl: string;
+  cover: string;
+  artist: Artist
 }

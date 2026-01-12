@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import type {ArtistInfo} from '@/entities/artist/model/types';
-import { getFullArtistInfo } from '@/entities/artist/api/artistApi';
+import type {ArtistInfo} from '@/entities';
+import { getFullArtistInfo } from '@/entities';
 
 interface ArtistState {
     artist:ArtistInfo | null;

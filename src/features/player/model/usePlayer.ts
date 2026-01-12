@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from '@/app/store/store';
-import {playTrack, pause,togglePlay } from '@/app/store/slices/playerSlice';
-import type {Track} from '@/entities/track/model/types.ts';
+import { useAppDispatch, useAppSelector } from '@/app';
+import {playTrack, pause,togglePlay } from '@/app';
+import type {Track} from '@/entities';
 
-export default function usePlayer() {
+export function usePlayer() {
     const dispatch = useAppDispatch();
     const { currentTrack, isPlaying } = useAppSelector(state => state.player);
 

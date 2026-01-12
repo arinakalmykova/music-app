@@ -1,5 +1,6 @@
-import { SearchForm, ArtistList } from '@/app/index.ts';
-import useArtistSearch from '@/features/artistSearch/model/useArtistSearch';
+import { SearchForm } from '@/features';
+import { ArtistList} from '@/widgets'
+import { useArtistSearch}  from '@/features';
 import '@/app/styles/HomePage.css';
 
 export function HomePage() {

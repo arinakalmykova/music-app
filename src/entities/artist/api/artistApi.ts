@@ -1,5 +1,5 @@
-import { LASTFM_API_KEY, LASTFM_API_URL } from '@/shared/config/env';
-import type { Artist, ArtistInfo } from '@/entities/artist/model/types';
+import { LASTFM_API_KEY, LASTFM_API_URL } from '@/shared';
+import type { Artist, ArtistInfo,Track } from '@/entities';
 
 export async function searchArtists(query: string): Promise<Artist[]> {
   try {
@@ -61,23 +61,28 @@ export async function getArtistBaseInfo(artistName: string): Promise<Pick<Artist
   }
 }
 
-export async function getArtistTopTracks(artistName: string): Promise<ArtistInfo['topTracks']> {
-  try {
-    const response = await fetch(
-      `${LASTFM_API_URL}?method=artist.gettoptracks&artist=${artistName}&api_key=${LASTFM_API_KEY}&format=json`
-    );
-    const data = await response.json();
-    if (!data.toptracks || !data.toptracks.track) return [];
-    return data.toptracks.track.map((t: any) => ({
+export async function getArtistTopTracks(
+  artistName: string
+): Promise<ArtistInfo['topTracks']> {
+  const response = await fetch(
+    `${LASTFM_API_URL}?method=artist.gettoptracks&artist=${artistName}&api_key=${LASTFM_API_KEY}&format=json`
+  );
+  const data = await response.json();
+
+  if (!data.toptracks?.track) return [];
+
+  const tracks = await Promise.all(
+    data.toptracks.track.map(async (t: any) => ({
       id: t.mbid || `${t.name}-${artistName}`,
       title: t.name,
       artistId: artistName,
-    }));
-  } catch (err) {
-    console.error(err);
-    return [];
-  }  
+      previewUrl: await getTrackPreview(artistName, t.name),
+    }))
+  );
+
+  return tracks;
 }
+
 
 export async function getArtistTopAlbums(artistName: string): Promise<ArtistInfo['topAlbums']> { 
   try {
@@ -120,5 +125,31 @@ export async function getFullArtistInfo(artistName: string): Promise<ArtistInfo 
     return null;
   }
 }
+
+
+export async function getTrackPreview(artist: string, track: string): Promise<string | null> {
+  const response = await fetch(
+    `https://itunes.apple.com/search?term=${encodeURIComponent(
+      artist + ' ' + track
+    )}&entity=song&limit=1`
+  );
+  const data = await response.json();
+  return data.results?.[0]?.previewUrl ?? null;
+}
+
+
+export async function getGlobalTopTracks(): Promise<Track[]> {
+  const response = await fetch('https://itunes.apple.com/us/rss/topsongs/limit=10/json');
+  const data = await response.json();
+
+  return data.feed.entry.map((entry: any) => ({
+    id: entry.id.attributes['im:id'],
+    title: entry['im:name'].label,
+    artist: entry['im:artist'].label,
+    previewUrl: entry.link[1]?.attributes?.href || '',
+    coverImage: entry['im:image'][2]?.label || '', 
+  }));
+}
+
 
 

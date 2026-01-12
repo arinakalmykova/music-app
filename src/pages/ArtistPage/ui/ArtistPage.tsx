@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useArtistInfo from '@/features/useArtistInfo/model/useArtistInfo';
-import { ArtistCard } from '@/entities/artist/ui/ArtistCard';
-import { AlbumCard } from '@/entities/album/ui/AlbumCard';
-import { TrackCard } from '@/entities/track/ui/TrackCard';
+import { useArtistInfo } from '@/features';
+import { ArtistCard } from '@/entities';
+import { AlbumCard } from '@/entities';
+import { TrackCard } from '@/entities';
 import '@/app/styles/ArtistPage.css';
 import { ArrowLeft } from 'phosphor-react';
 
@@ -65,7 +65,7 @@ export function ArtistPage() {
         <h2>Похожие артисты</h2>
         <div className="similar-artists-list">
           {artistInfo.similarArtists.map(artist => (
-              <ArtistCard artist={artist} />
+              <ArtistCard key={artist.id} artist={artist} />
           ))}
         </div>
       </section>

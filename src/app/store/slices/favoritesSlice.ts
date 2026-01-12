@@ -1,6 +1,6 @@
 import { createSlice} from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type {Track} from '@/entities/track/model/types';
+import type {Track} from '@/entities';
 
 interface favoriteState {
     likedMusic:Track[];

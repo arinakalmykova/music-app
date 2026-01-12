@@ -1,5 +1,5 @@
-import type {Artist} from '@/entities/artist/model/types';
-import {ArtistCard} from '@/app/index.ts';
+import type {Artist} from '@/entities';
+import {ArtistCard} from '@/entities';
 import '@/app/styles/ArtistList.css';
 
 interface ArtistListProps {

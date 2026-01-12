@@ -1,15 +1,18 @@
-import { Header } from '@/widgets/Header/ui/Header.tsx';
-import { Footer } from '@/widgets/Footer/ui/Footer.tsx';
+import { Header } from '@/widgets';
+import { Footer } from '@/widgets';
 import {Outlet} from 'react-router-dom';
+import '@/app/styles/MainLayout.css';
 
 export function MainLayout() {
     return (
         <>
-        <Header/>
-        <main>
-            <Outlet/>
-        </main>
-        <Footer/>
+        <div className='layout'>
+            <Header/>
+            <main className ='content'>
+                <Outlet/>
+            </main>
+            <Footer/>
+        </div>
         </>
     )
 }

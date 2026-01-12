@@ -1,8 +1,8 @@
-import type {Track} from '@/entities/track/model/types.ts';
-import {toggleLike} from '@/app/store/slices/favoritesSlice';
+import type {Track} from '@/entities';
+import {toggleLike} from '@/app';
 import  { useSelector} from 'react-redux';
-import { useAppDispatch } from '@/app/store/store';
-import type { RootState} from '@/app/store/store';
+import { useAppDispatch } from '@/app';
+import type { RootState} from '@/app';
 
 export function useFavorities() {
   const dispatch = useAppDispatch();

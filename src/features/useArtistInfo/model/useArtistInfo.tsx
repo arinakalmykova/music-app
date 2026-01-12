@@ -1,12 +1,12 @@
-import type { AppDispatch, RootState } from '@/app/store/store';
-import  { useDispatch,useSelector} from 'react-redux';
-import {fetchArtist} from '@/app/store/slices/artistSlice';
+import { useAppDispatch, useAppSelector } from '@/app';
+import {fetchArtist} from '@/app';
 
-export default function useArtistInfo(artistName: string) {
-    const dispatch = useDispatch<AppDispatch>();
-    const artistInfo = useSelector<RootState>(state => state.artist.artist );
-    const isLoading =useSelector<RootState>(state => state.artist.isLoading );
-    const error =useSelector<RootState>(state => state.artist.error );
+export function useArtistInfo(artistName: string) {
+    const dispatch = useAppDispatch();
+   
+   const artistInfo = useAppSelector(state => state.artist.artist);
+   const isLoading = useAppSelector(state => state.artist.isLoading);
+   const error = useAppSelector(state => state.artist.error);
 
     const loadArtistInfo = async () => {
        dispatch(fetchArtist(artistName));

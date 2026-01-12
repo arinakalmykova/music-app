@@ -1,6 +1,6 @@
-import usePlayer from "@/features/player/model/usePlayer";
+import {usePlayer} from "@/features";
 import { Play,Pause } from "phosphor-react";
-import type {Track} from '@/entities/track/model/types';
+import type {Track} from '@/entities';
 
 interface PlayButtonProps {
   track: Track;

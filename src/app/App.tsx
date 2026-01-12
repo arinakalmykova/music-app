@@ -1,10 +1,15 @@
 import '@/app/styles/App.css'
 import { RouterProvider } from 'react-router-dom';
-import {router} from '@/app/router/router.tsx';
+import {router} from '@/app';
+import { AudioPlayer } from '@/widgets';
+import {Fragment} from 'react';
 
 function App() {
   return (
-    <RouterProvider router={router}></RouterProvider>
+    <Fragment>
+      <RouterProvider router={router}></RouterProvider>
+      <AudioPlayer/>
+    </Fragment>
   )
 }
 

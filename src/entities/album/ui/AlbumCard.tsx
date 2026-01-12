@@ -1,4 +1,4 @@
-import type { Album } from "@/entities/album/model/types";
+import type { Album } from "@/entities";
 import '@/app/styles/AlbumCard.css';
 
 export function AlbumCard({album}: {album: Album}) {
