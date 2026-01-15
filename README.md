@@ -1,75 +1,90 @@
-# React + TypeScript + Vite
+````markdown
+# MusicApp 🎵
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MusicApp** — это SPA-приложение для поиска музыки, просмотра информации об артистах, топ-треков, альбомов и похожих исполнителей.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Технологии
 
-## React Compiler
+- **React** + TypeScript  
+- **Redux Toolkit & RTK Query** для управления состоянием и работы с API  
+- **React Router** для маршрутизации  
+- **Last.fm API** — данные об артистах, топ-треках и альбомах  
+- **iTunes API** — для предпрослушивания треков  
+- **Phosphor Icons** — иконки  
+- CSS-модули / SCSS для стилизации  
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## ⚡ Особенности
 
-## Expanding the ESLint configuration
+- Поиск артистов по имени  
+- Просмотр информации об артисте: жанры, слушатели  
+- Топ-треки и топ-альбомы артиста  
+- Похожие артисты  
+- Возможность ставить лайки трекам и сохранять их в localStorage  
+- Превью треков через iTunes  
+- Чарты
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Запуск проекта
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Клонируйте репозиторий:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/arinakalmykova/music-app.git
+````
+
+2. Установите зависимости:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Запустите проект:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Откройте [http://localhost:5173](http://localhost:5173) в браузере
+
+---
+
+## 🔑 API
+
+* **Last.fm API** — для информации об артистах, альбомах и топ-треках
+* **iTunes API** — для предпрослушивания треков
+
+> Для работы приложения нужен `LASTFM_API_KEY`. Добавьте его в `.env`:
+
+```env
+VITE_LASTFM_API_KEY=ваш_ключ
+```
+
+---
+
+## 📂 Структура проекта
+
+* `src/app` — настройка Redux, кастомные хуки
+* `src/entities` — сущности: Artist, Album, Track, API
+* `src/features` — логика и хуки для работы с API
+* `src/widgets` — UI-компоненты (TrackCard, AlbumCard, ArtistCard)
+* `src/shared` — утилиты и константы
+
+---
+
+## ⚡ Планируемые улучшения
+
+* Улучшенный предпросмотр треков
+* Стилизация
+
+---
+
+## 💻 Автор Калмыкова Арина
+
+Разработано с ❤️ для изучения React, Redux Toolkit и работы с музыкальными API.
+
 ```
