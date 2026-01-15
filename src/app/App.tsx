@@ -2,14 +2,16 @@ import '@/app/styles/App.css'
 import { RouterProvider } from 'react-router-dom';
 import {router} from '@/app';
 import { AudioPlayer } from '@/widgets';
-import {Fragment} from 'react';
-
+import { PlayerProvider} from '@/features';
+import {MiniPlayer} from '@/widgets'
+                
 function App() {
   return (
-    <Fragment>
+    <PlayerProvider>
       <RouterProvider router={router}></RouterProvider>
       <AudioPlayer/>
-    </Fragment>
+      <MiniPlayer />
+    </PlayerProvider>
   )
 }
 

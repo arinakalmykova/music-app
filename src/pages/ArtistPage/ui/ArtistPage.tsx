@@ -1,22 +1,31 @@
-import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useArtistInfo } from '@/features';
 import { ArtistCard } from '@/entities';
 import { AlbumCard } from '@/entities';
 import { TrackCard } from '@/entities';
 import '@/app/styles/ArtistPage.css';
 import { ArrowLeft } from 'phosphor-react';
+import {
+  useGetArtistBaseInfoQuery,
+  useGetArtistTopTracksQuery,
+  useGetArtistTopAlbumsQuery,
+} from '@/entities';
 
 export function ArtistPage() {
   const { name } = useParams();
-  const { artistInfo, isLoading, error, loadArtistInfo } = useArtistInfo(name || '');
+  const skip = !name;
 
-  useEffect(() => {
-    if (name) loadArtistInfo();
-  }, [name]);
+  const {
+    data: artistInfo
+  } = useGetArtistBaseInfoQuery(name!, { skip });
 
-  if (isLoading) return <p>Загрузка информации об артисте...</p>;
-  if (error) return <p>{error}</p>;
+  const {
+    data: topTracks = [],
+  } = useGetArtistTopTracksQuery(name!, { skip });
+
+  const {
+    data: topAlbums = [],
+  } = useGetArtistTopAlbumsQuery(name!, { skip });
+
   if (!artistInfo) return <p>Артист не найден</p>;
 
   return (
@@ -45,8 +54,8 @@ export function ArtistPage() {
         <section className="artist-section-tracks">
       <h2>Топ-треки</h2>
       <div className="tracks-list">
-        {artistInfo.topTracks.slice(0, 10).map((track, i) => (
-          <TrackCard key={track.id} track={track} index={i} />
+        {topTracks.slice(0, 10).map((track, i) => (
+          <TrackCard key={track.id} track={track} tracks={artistInfo.topTracks} index={i} />
         ))}
       </div>
     </section>
@@ -55,7 +64,7 @@ export function ArtistPage() {
       <section className="artist-section-albums">
         <h2>Топ-альбомы</h2>
         <div className="albums-list">
-          {artistInfo.topAlbums.map(album => (
+          {topAlbums.map(album => (
             <AlbumCard key={album.id} album={album} />
           ))}
         </div>

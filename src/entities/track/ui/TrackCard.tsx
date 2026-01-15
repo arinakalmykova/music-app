@@ -7,9 +7,10 @@ import '@/app/styles/TrackCard.css';
 interface TrackCardProps {
   track: Track;
   index?: number; 
+  tracks?: Track[]
 }
 
-export function TrackCard({ track, index }: TrackCardProps) {
+export function TrackCard({ track, index,tracks }: TrackCardProps) {
   const { onToggleLike, isLiked } = useFavorities();
 
   return (
@@ -17,10 +18,13 @@ export function TrackCard({ track, index }: TrackCardProps) {
       <div className="track-info">
         {index !== undefined && <span className="track-number">{index + 1}</span>}
         <h3>{track.title}</h3>
+        <span className="track-artist">
+          {track.artist?.name ?? 'Unknown artist'}
+        </span>
       </div>
       <div className="track-actions">
-        <LikeButton liked={isLiked(track)} onToggle={() => onToggleLike(track)} />
-        <PlayButton track = {track} />
+        <LikeButton liked={isLiked(track)}  onToggle={() => onToggleLike(track)} />
+        <PlayButton track = {track} tracks={tracks}/>
       </div>
     </div>
   );

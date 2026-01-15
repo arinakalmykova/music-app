@@ -1,9 +1,9 @@
 import {useEffect, useRef} from 'react';
-import {useAppSelector} from '@/app';
+import { usePlayerContext } from '@/features';
 
 export function AudioPlayer () {
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const {currentTrack, isPlaying} = useAppSelector(state => state.player);
+    const {currentTrack, isPlaying} = usePlayerContext()    ;
 
     useEffect(()=> {
         if(!audioRef.current || !currentTrack?.previewUrl ) return;

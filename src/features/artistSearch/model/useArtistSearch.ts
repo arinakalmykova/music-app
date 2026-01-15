@@ -1,31 +1,19 @@
 import { useState } from 'react';
-import type {Artist } from '@/entities';
-import { searchArtists } from '@/entities';
+import { useSearchArtistQuery } from '@/entities';
 
+export function useArtistSearch() {
+  const [query, setQuery] = useState(''); 
 
-export  function useArtistSearch() {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
-    const [results, setResults] = useState<Artist[]>([]);
+  const { data, isLoading, error } = useSearchArtistQuery(query, {
+    skip: query.trim() === '', 
+  });
 
-    const search = async (query: string) => { 
-        if (query.trim() === '') {
-            setResults([]);
-            return;
-        }
+  const search = (q: string) => setQuery(q);
 
-        setIsLoading(true);
-        setError(null);
-
-        try {
-            const artists = await searchArtists(query);
-            setResults(artists);
-        } catch (err) {
-            setError('Ошибка при поиске артистов');
-        } finally {
-            setIsLoading(false);
-        }
-    }
-
-    return {isLoading, error, results, search};
+  return {
+    results: data || [],
+    isLoading,
+    error: error ? 'Ошибка при поиске артистов' : null,
+    search,
+  };
 }

@@ -1,7 +1,6 @@
 import {createBrowserRouter} from 'react-router-dom';
 import { MainLayout} from '@/app';
-import {HomePage, FavoritiesPage, ChartsPage,ArtistPage}  from '@/pages';
-
+import {HomePage, FavoritiesPage, ChartsPage,ArtistPage, AlbumPage}  from '@/pages';
 
 export const router = createBrowserRouter([
     {
@@ -20,9 +19,13 @@ export const router = createBrowserRouter([
                 element:<ChartsPage />
             },
             {
-                path:'/artist/:name',
-                element:<ArtistPage />
-            }
+                path: '/artist/:name',
+                element: <ArtistPage />,
+            },
+            {
+                path: '/artist/:artistName/album/:albumName',
+                element: <AlbumPage/>,
+            },
         ]
     }
 ]);

@@ -1,13 +1,9 @@
 export {MainLayout} from '@/app/layouts/MainLayout';
 export { router } from '@/app/router/router';
 export { store } from '@/app/store/store';
-export { artistSlice } from '@/app/store/slices/artistSlice';
 export { favoritesSlice } from '@/app/store/slices/favoritesSlice';
-export { playerSlice } from '@/app/store/slices/playerSlice';
 export { chartSlice } from '@/app/store/slices/chartsSlice';
 export {useAppSelector, useAppDispatch} from '@/app/store/store';
 export type {RootState} from '@/app/store/store';
 export { toggleLike } from '@/app/store/slices/favoritesSlice';
-export { playTrack, pause,togglePlay } from '@/app/store/slices/playerSlice';
-export { fetchArtist } from '@/app/store/slices/artistSlice';
 export { fetchGlobalCharts } from '@/app/store/slices/chartsSlice';

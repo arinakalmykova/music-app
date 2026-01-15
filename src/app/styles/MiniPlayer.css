@@ -1,0 +1,68 @@
+.mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(0, 0, 0, 0.066);
+  backdrop-filter: blur(10px);
+  color: var(--font-color-black);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.mini-player__info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.mini-player__info span{
+  font-size: 16px;
+}
+
+.mini-player__info strong{
+  font-size: 24px;
+}
+
+.mini-player__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: #000000;
+}
+
+.mini-player__progress div {
+  height: 100%;
+  background: #ffffff;
+}
+
+.mini-player__controls button{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--font-color-black);
+}
+
+.mini-player__like{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--font-color-black);
+}
+
+
+.mini-player__cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+

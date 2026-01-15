@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { Track, Artist } from '@/entities';
-import { getGlobalTopTracks } from '@/entities/artist/api/artistApi';
+import { getGlobalTopTracks } from '@/entities';
 
 interface ChartState {
   topTracks: Track[];
@@ -20,10 +20,11 @@ export const fetchGlobalCharts = createAsyncThunk(
   'charts/fetchGlobalCharts',
   async () => {
     const tracks = await getGlobalTopTracks();
-    const artists = tracks.map(t => ({ id: t.artist, name: t.artist }));
+    const artists: Artist[] = tracks.map(t => t.artist);
     return { tracks, artists };
   }
 );
+
 
 export const chartSlice = createSlice({
   name: 'charts',

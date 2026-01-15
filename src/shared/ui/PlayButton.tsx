@@ -1,18 +1,19 @@
-import {usePlayer} from "@/features";
+import {usePlayerContext} from "@/features";
 import { Play,Pause } from "phosphor-react";
 import type {Track} from '@/entities';
 
 interface PlayButtonProps {
   track: Track;
+  tracks?: Track[]
 }
 
-export function PlayButton({track}: PlayButtonProps) {
-  const { currentTrack, isPlaying, play, toggle } = usePlayer();
+export function PlayButton({track, tracks}: PlayButtonProps) {
+  const { currentTrack, isPlaying, playTrack, togglePlay } = usePlayerContext();
   const isCurrent = currentTrack?.id === track.id;
 
   const handleClick = () => {
-    if (!isCurrent) play(track);
-    else toggle();
+    if (!isCurrent) playTrack(track, tracks);
+    else togglePlay();
   };
 
   return isCurrent && isPlaying ? (
@@ -21,3 +22,4 @@ export function PlayButton({track}: PlayButtonProps) {
     <Play size={24} onClick={handleClick} />
   );
 }
+
