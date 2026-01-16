@@ -73,6 +73,7 @@ VITE_LASTFM_API_KEY=ваш_ключ
 * `src/features` — логика и хуки для работы с API
 * `src/widgets` — UI-компоненты (TrackCard, AlbumCard, ArtistCard)
 * `src/shared` — утилиты и константы
+* `src/test` - Unit тесты
 
 ---
 ## Тесты
