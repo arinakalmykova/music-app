@@ -12,6 +12,7 @@
 - **Last.fm API** — данные об артистах, топ-треках и альбомах  
 - **iTunes API** — для предпрослушивания треков  
 - **Phosphor Icons** — иконки  
+- Vitest + React Testing Library для тестов
 - CSS-модули / SCSS для стилизации  
 
 ---
@@ -74,6 +75,29 @@ VITE_LASTFM_API_KEY=ваш_ключ
 * `src/shared` — утилиты и константы
 
 ---
+## Тесты
+
+В проекте реализованы базовые тесты компонентов и RTK Query:
+Unit-тесты компонентов – проверяют корректный рендер карточек трека и страницы артиста.
+Mock RTK Query – для проверки компонентов или хуков, использующих данные из API, без реальных запросов.
+
+Примеры тестов:
+
+```bash
+// TrackCard.test.tsx
+render(<TrackCard track={track} />);
+expect(screen.getByText('Track 1')).toBeInTheDocument();
+expect(screen.getByText('Artist 1')).toBeInTheDocument();
+```
+
+Запуск тестов
+
+```bash
+npm run test
+```
+
+Тесты написаны с использованием Vitest и React Testing Library.
+Включают проверку рендера компонентов и работу хуков с моками RTK Query.
 
 ## ⚡ Планируемые улучшения
 

@@ -6,6 +6,5 @@ export interface Track {
   artist: Artist;
   previewUrl: string;
   coverImage: string;
-  duration: number;
 }
 
