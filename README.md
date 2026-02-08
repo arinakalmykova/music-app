@@ -107,6 +107,25 @@ npm run test
 
 ---
 
+## Результат
+
+![Главная](music-app/public/images/main.png)
+---
+![Страница артиста](music-app/public/images/artist.png)
+---
+![Альбомы](music-app/public/images/albums.png)
+---
+![Страница альбома](music-app/public/images/album.png)
+---
+![Похожие артисты](music-app/public/images/similiar.png)
+---
+![Любимое](music-app/public/images/favorite.png)
+---
+![Чарт](music-app/public/images/charts.png)
+---
+![Адаптивность](music-app/public/images/adaptive.png)
+---
+
 ## 💻 Автор Калмыкова Арина
 
 Разработано с ❤️ для изучения React, Redux Toolkit и работы с музыкальными API.
