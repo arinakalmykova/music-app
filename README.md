@@ -109,21 +109,21 @@ npm run test
 
 ## Результат
 
-![Главная](music-app/public/images/main.png)
+![Главная](public/images/main.png)
 ---
-![Страница артиста](music-app/public/images/artist.png)
+![Страница артиста](public/images/artist.png)
 ---
-![Альбомы](music-app/public/images/albums.png)
+![Альбомы](public/images/albums.png)
 ---
-![Страница альбома](music-app/public/images/album.png)
+![Страница альбома](public/images/album.png)
 ---
-![Похожие артисты](music-app/public/images/similiar.png)
+![Похожие артисты](public/images/similiar.png)
 ---
-![Любимое](music-app/public/images/favorite.png)
+![Любимое](public/images/favorite.png)
 ---
-![Чарт](music-app/public/images/charts.png)
+![Чарт](public/images/charts.png)
 ---
-![Адаптивность](music-app/public/images/adaptive.png)
+![Адаптивность](public/images/adaptive.png)
 ---
 
 ## 💻 Автор Калмыкова Арина
